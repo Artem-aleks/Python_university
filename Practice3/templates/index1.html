@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flask Web Application</title>
+</head>
+<body>
+	<h1>Data from Database</h1>
+	{% for row in data %}
+		<p>{{ row[1] }}</p>
+	{% endfor %}
+	<form action="/add" method="POST">
+		<label for="string">Add a Random String:</label>
+		<input type="text" id="string" name="string">
+		<button type="submit">Add</button>
+	</form>
+	<form action="/delete" method="POST">
+		<label for="string_id">Delete a String:</label>
+		<select id="string_id" name="string_id">
+			{% for row in data %}
+				<option value="{{ row[0] }}">{{ row[1] }}</option>
+			{% endfor %}
+		</select>
+		<button type="submit">Delete</button>
+	</form>
+</body>
+</html>
